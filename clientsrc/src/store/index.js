@@ -5,9 +5,9 @@ import router from "../router";
 
 Vue.use(Vuex);
 
-let baseUrl = location.host.includes("localhost")
-  ? "http://localhost:3000/"
-  : "/";
+let baseUrl = location.host.includes("localhost") ?
+  "http://localhost:3000/" :
+  "/";
 
 let api = Axios.create({
   baseURL: baseUrl + "api",
@@ -17,11 +17,15 @@ let api = Axios.create({
 
 export default new Vuex.Store({
   state: {
-    profile: {}
+    profile: {},
+    bugs: []
   },
   mutations: {
     setProfile(state, profile) {
       state.profile = profile;
+    },
+    setBugs(state, bugs) {
+      state.bugs = bugs
     }
   },
   actions: {
@@ -31,13 +35,37 @@ export default new Vuex.Store({
     resetBearer() {
       api.defaults.headers.authorization = "";
     },
-    async getProfile({ commit }) {
+    async getProfile({
+      commit
+    }) {
       try {
         let res = await api.get("profile");
         commit("setProfile", res.data);
       } catch (error) {
         console.error(error);
       }
+    },
+
+    async getBugs({
+      dispatch,
+      commit
+    }) {
+      api.get('bugs')
+        .then(res => {
+          commit('setBugs', res.data)
+          console.log(res.data)
+        })
+    },
+
+    addBug({
+      commit,
+      dispatch
+    }, bugData) {
+      api.post('bugs', bugData)
+        .then(serverBoard => {
+          dispatch('getBugs')
+        })
     }
+
   }
 });
