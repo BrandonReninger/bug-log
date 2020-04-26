@@ -7,7 +7,7 @@ const Note = new Schema({
         type: String,
         required: true
     },
-    bug: {
+    bugId: {
         type: ObjectId,
         ref: 'Bug',
         required: true
