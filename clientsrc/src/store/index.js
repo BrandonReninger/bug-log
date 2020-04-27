@@ -67,8 +67,21 @@ export default new Vuex.Store({
     }, bugData) {
       api.post('bugs', bugData)
         .then(serverBoard => {
-          dispatch('getBugs')
+          dispatch('bugDeetz')
         })
+    },
+
+    async bugDeetz({
+      commit,
+      dispatch
+    }, bugId) {
+      try {
+        let res = await api.get('bugs' + bugId)
+        console.log(res.data)
+        commit('setActiveBug', res.data)
+      } catch (error) {
+        console.error(error)
+      }
     }
 
   }

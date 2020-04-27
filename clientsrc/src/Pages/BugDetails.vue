@@ -29,7 +29,14 @@ export default {
   data() {
     return {};
   },
-  computed: {},
+  created() {
+    this.$store.dispatch("bugDeetz", this.$route.params.bugId);
+  },
+  computed: {
+    bug() {
+      return this.$store.activeBug;
+    }
+  },
   methods: {},
   components: {}
 };

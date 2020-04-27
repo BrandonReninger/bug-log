@@ -26,10 +26,7 @@ export class BugsController extends BaseController {
     async getAll(req, res, next) {
         try {
             let data = await bugsService.getAll();
-            res.send({
-                data: data,
-                message: "got bugs"
-            })
+            return res.status(201).send(data)
         } catch (error) {
             next(error);
         }

@@ -25,6 +25,7 @@ const routes = [{
   {
     path: "/bugs/:bugId",
     name: "BugDetails",
+    beforeEnter: authGuard,
     // @ts-ignore
     component: () => import( /*webpackChunkName: "bugDetails"*/ '../Pages/BugDetails.vue')
   }
