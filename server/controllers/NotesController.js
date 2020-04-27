@@ -12,7 +12,7 @@ export class NotesController extends BaseController {
     constructor() {
         super("api/notes");
         this.router
-            .use(auth0Provider.getAuthorizedUserInfo)
+            //.use(auth0Provider.getAuthorizedUserInfo)
             .get("", this.getAll)
             // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
             .post("", this.create);

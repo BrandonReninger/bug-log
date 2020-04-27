@@ -15,7 +15,7 @@ export class BugsController extends BaseController {
     constructor() {
         super("api/bugs");
         this.router
-            .use(auth0Provider.getAuthorizedUserInfo)
+            //.use(auth0Provider.getAuthorizedUserInfo)
             .get("", this.getAll)
             .get("/:id", this.getById)
             .get("/:id/notes", this.getNotesByBugId)
@@ -69,7 +69,7 @@ export class BugsController extends BaseController {
 
     async edit(req, res, next) {
         try {
-            let bug = await bugsService.edit(req.params.id, req.userInfo.email, req.body)
+            let bug = await bugsService.edit(req.params.id, req.body)
             return res.send(bug)
         } catch (error) {
             next(error)

@@ -7,13 +7,12 @@ import {
 
 class NotesService {
     async getAll(id) {
-        let notes = await dbContext.Notes.find({
+        return await dbContext.Notes.find({
             _id: id
         }).populate(
             "creator",
             "name picture"
         );
-        return notes;
     }
     async findById(id) {
         let note = await dbContext.Notes.findById(id);
@@ -28,6 +27,7 @@ class NotesService {
         if (!note) {
             throw new BadRequest("not quite right")
         }
+        return note
     }
 
 }

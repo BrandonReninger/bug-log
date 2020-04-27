@@ -28,7 +28,7 @@ class BugsService {
         return bug
     }
 
-    async delete(id) {
+    async delete(id, userEmail) {
         let res = await dbContext.Bugs.findOneAndRemove({
             _id: id,
             //creatorEmail: userEmail
@@ -38,10 +38,10 @@ class BugsService {
         }
     }
 
-    async edit(id, userEmail, update) {
+    async edit(id, update) {
         let data = await dbContext.Bugs.findOneAndUpdate({
             _id: id,
-            creatorEmail: userEmail
+            //creatorEmail: userEmail
         }, update, {
             new: true
         })
