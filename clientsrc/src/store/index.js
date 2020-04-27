@@ -65,9 +65,15 @@ export default new Vuex.Store({
       commit,
       dispatch
     }, bugData) {
-      api.post('bugs', bugData)
-        .then(serverBoard => {
-          dispatch('bugDeetz')
+      let res = api.post('bugs', bugData)
+        .then(res => {
+          dispatch('bugDeetz', res.data.data._id)
+          router.push({
+            name: "BugDetails",
+            params: {
+              bugId: res.data.data._id
+            }
+          })
         })
     },
 
@@ -76,7 +82,8 @@ export default new Vuex.Store({
       dispatch
     }, bugId) {
       try {
-        let res = await api.get('bugs' + bugId)
+
+        let res = await api.get('bugs/' + bugId)
         console.log(res.data)
         commit('setActiveBug', res.data)
       } catch (error) {

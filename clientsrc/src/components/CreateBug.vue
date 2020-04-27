@@ -18,17 +18,17 @@ export default {
       newBug: {}
     };
   },
-  computed: {},
+  computed: {
+    bug() {
+      return this.$store.state.activeBug;
+    }
+  },
   methods: {
-    addBug() {
-      this.$store.dispatch("addBug", this.newBug);
+    async addBug() {
+      debugger;
+      await this.$store.dispatch("addBug", this.newBug);
       this.newBug = {};
-      console.log(this.newBug.id);
-      this.$router.push({
-        name: "BugDetails",
-        path: "bugs/" + this.newBug.id,
-        params: { bugId: this.newBug.id }
-      });
+      //this.$router.push({ path: "bugs/" + bug.id, name: "BugDetails" });
     }
   },
   components: {}

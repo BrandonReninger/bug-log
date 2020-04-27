@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     bug() {
-      return this.$store.activeBug;
+      return this.$store.state.activeBug;
     }
   },
   methods: {},
