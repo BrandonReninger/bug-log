@@ -15,7 +15,7 @@
       <div class="col-12">
         <p>{{bug.description}}</p>
       </div>
-      <button class="btn btn-sm btn-primary">BACK</button>
+      <button class="btn btn-sm btn-primary" @click="$router.push({name: 'Home'})">BACK</button>
     </div>
     <!--notes here-->
   </div>

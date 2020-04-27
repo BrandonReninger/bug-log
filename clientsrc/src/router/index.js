@@ -13,7 +13,8 @@ Vue.use(VueRouter);
 const routes = [{
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
+    beforeEnter: authGuard
   },
   {
     path: "/profile",

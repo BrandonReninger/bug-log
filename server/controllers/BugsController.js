@@ -15,7 +15,7 @@ export class BugsController extends BaseController {
     constructor() {
         super("api/bugs");
         this.router
-            //.use(auth0Provider.getAuthorizedUserInfo)
+            .use(auth0Provider.getAuthorizedUserInfo)
             .get("", this.getAll)
             .get("/:id", this.getById)
             .get("/:id/notes", this.getNotesByBugId)
