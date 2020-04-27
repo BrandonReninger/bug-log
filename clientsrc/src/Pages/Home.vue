@@ -10,12 +10,7 @@
         <th class="col-2">Status</th>
         <th class="col-3">Last Modified</th>
         <tbody>
-          <tr v-for="bug in bugs" :key="bug.id" :bugData="bug">
-            <td class="col-3">{{bug.title}}</td>
-            <td class="col-3">{{bug.creatorEmail}}</td>
-            <td class="col-2">{{bug.closed}}</td>
-            <td class="col-3">{{bug.updatedAt}}</td>
-          </tr>
+          <bug v-for="bug in bugs" :key="bug._id" :bugData="bug"></bug>
         </tbody>
       </table>
     </div>
@@ -36,6 +31,9 @@ export default {
   computed: {
     bugs() {
       return this.$store.state.bugs;
+    },
+    created() {
+      this.$store.dispatch("getBugs");
     }
   },
   components: { CreateBug, Bug }
