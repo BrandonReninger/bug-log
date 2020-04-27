@@ -18,7 +18,8 @@ let api = Axios.create({
 export default new Vuex.Store({
   state: {
     profile: {},
-    bugs: []
+    bugs: [],
+    activeBug: {}
   },
   mutations: {
     setProfile(state, profile) {
@@ -26,6 +27,9 @@ export default new Vuex.Store({
     },
     setBugs(state, bugs) {
       state.bugs = bugs
+    },
+    setActiveBug(state, bug) {
+      state.activeBug = bug
     }
   },
   actions: {
