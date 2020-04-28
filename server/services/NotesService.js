@@ -6,6 +6,16 @@ import {
 } from "../utils/Errors";
 
 class NotesService {
+    async delete(id, email) {
+        let data = await dbContext.Notes.findOneAndDelete({
+            _id: id,
+            creatorEmail: email
+        })
+        if (!data) {
+            throw new BadRequest("not quite right")
+        }
+    }
+
     async getAll(id) {
         return await dbContext.Notes.find({
             _id: id
@@ -14,8 +24,8 @@ class NotesService {
             "name picture"
         );
     }
-    async findById(id) {
-        let note = await dbContext.Notes.findById(id);
+    async find(query = {}) {
+        let note = await dbContext.Notes.find(query);
         if (!note) {
             throw new BadRequest("Invalid Id");
         }

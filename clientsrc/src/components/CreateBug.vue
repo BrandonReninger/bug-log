@@ -25,7 +25,6 @@ export default {
   },
   methods: {
     async addBug() {
-      debugger;
       await this.$store.dispatch("addBug", this.newBug);
       this.newBug = {};
       //this.$router.push({ path: "bugs/" + bug.id, name: "BugDetails" });

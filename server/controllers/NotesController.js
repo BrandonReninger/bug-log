@@ -12,10 +12,11 @@ export class NotesController extends BaseController {
     constructor() {
         super("api/notes");
         this.router
-            //.use(auth0Provider.getAuthorizedUserInfo)
+            .use(auth0Provider.getAuthorizedUserInfo)
             .get("", this.getAll)
             // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
-            .post("", this.create);
+            .post("", this.create)
+            .delete("/:id", this.delete)
     }
     async getAll(req, res, next) {
         try {
@@ -37,4 +38,14 @@ export class NotesController extends BaseController {
             next(error);
         }
     }
+
+    async delete(req, res, next) {
+        try {
+            await notesService.delete(req.params.id, req.userInfo.email)
+            return res.send("deleted!")
+        } catch (error) {
+            next(error)
+        }
+    }
+
 }

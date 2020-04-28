@@ -34,10 +34,10 @@ export class BugsController extends BaseController {
 
     async getNotesByBugId(req, res, next) {
         try {
-            let notes = await notesService.findById(
-                req.params.id
-            )
-            res.send(notes)
+            let bug = await notesService.find({
+                bugId: req.params.id
+            })
+            res.send(bug)
         } catch (error) {
             next(error)
         }

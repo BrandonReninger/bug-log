@@ -82,7 +82,6 @@ export default new Vuex.Store({
       dispatch
     }, bugId) {
       try {
-
         let res = await api.get('bugs/' + bugId)
         console.log(res.data)
         commit('setActiveBug', res.data)

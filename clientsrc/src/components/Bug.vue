@@ -1,5 +1,5 @@
 <template>
-  <div class="bug container-fluid">
+  <div class="bug">
     <tr>
       <td class="col-3">{{bugData.title}}</td>
       <td class="col-3">{{bugData.creatorEmail}}</td>
