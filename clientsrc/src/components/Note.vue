@@ -3,7 +3,7 @@
     <!--<h3>{{noteData.creatorEmail}}</h3>-->
     <p>{{noteData.content}}</p>
 
-    <button>DELETE</button>
+    <button class="btn btn-sm btn-danger" @click="deleteNote(noteData.id)">DELETE</button>
   </div>
 </template>
 
@@ -23,7 +23,13 @@ export default {
       return this.store.state.activeNote;
     }
   },
-  methods: {},
+  methods: {
+    deleteNote() {
+      debugger;
+      this.$store.dispatch("deleteNote", this.noteData);
+      this.$store.dispatch("getNotes", this.noteData.bugId);
+    }
+  },
   components: {}
 };
 </script>

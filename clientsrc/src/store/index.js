@@ -117,8 +117,19 @@ export default new Vuex.Store({
     }, bugId) {
       try {
         let res = await api.get('bugs/' + bugId + '/notes')
-        console.log(res.data)
         commit('setNotes', res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
+    async deleteNote({
+      commit,
+      dispatch
+    }, noteData) {
+      try {
+        let res = await api.delete('notes/' + noteData._id)
+        dispatch('getNotes', noteData.bugId)
       } catch (error) {
         console.error(error)
       }

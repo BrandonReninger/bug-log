@@ -23,6 +23,7 @@ export class BugsController extends BaseController {
             .post("", this.create)
             .post('/:id/notes', this.postNote)
             .delete("/:id", this.delete)
+        //.delete("/:id/notes/:id")
     }
     async getAll(req, res, next) {
         try {
