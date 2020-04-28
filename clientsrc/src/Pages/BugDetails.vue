@@ -19,31 +19,35 @@
     </div>
     <!--notes here-->
     <create-note :bugData="bug"></create-note>
+    <note v-for="note in notes" :noteData="note" :key="note._id"></note>
   </div>
 </template>
 
 
 <script>
 import CreateNote from "../components/CreateNote";
+import Note from "../components/Note";
 export default {
   name: "bugDetails",
 
   data() {
     return {};
   },
-  created() {
-    this.$store.dispatch("bugDeetz", this.$route.params.bugId);
-  },
+  //created() {},
   mounted() {
-    //this.$store.dispatch("getNotes", this.$route.params.bugId);
+    this.$store.dispatch("bugDeetz", this.$route.params.bugId);
+    this.$store.dispatch("getNotes", this.$route.params.bugId);
   },
   computed: {
     bug() {
       return this.$store.state.activeBug;
+    },
+    notes() {
+      return this.$store.state.notes;
     }
   },
   methods: {},
-  components: { CreateNote }
+  components: { CreateNote, Note }
 };
 </script>
 

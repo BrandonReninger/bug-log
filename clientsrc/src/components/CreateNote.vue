@@ -14,7 +14,7 @@ export default {
   props: ["bugData"],
   data() {
     return {
-      newNote: {}
+      newNote: { content: "" }
     };
   },
   computed: {},

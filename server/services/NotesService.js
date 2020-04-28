@@ -6,6 +6,14 @@ import {
 } from "../utils/Errors";
 
 class NotesService {
+    async findAll(query) {
+        try {
+            let data = await dbContext.Notes.find(query)
+            return data
+        } catch (error) {
+
+        }
+    }
     async delete(id, email) {
         let data = await dbContext.Notes.findOneAndDelete({
             _id: id,

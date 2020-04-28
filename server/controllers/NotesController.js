@@ -13,27 +13,28 @@ export class NotesController extends BaseController {
         super("api/notes");
         this.router
             .use(auth0Provider.getAuthorizedUserInfo)
-            .get("", this.getAll)
+            //.get("", this.getAll)
+            .get("/:id", this.findAll)
             // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
-            .post("", this.create)
+            //.post("", this.create)
             .delete("/:id", this.delete)
     }
-    async getAll(req, res, next) {
+    async findAll(req, res, next) {
         try {
-            let notes = notesService.getAll()
-            res.send({
-                data: notes,
-                message: "created note!"
+            let notes = notesService.findAll({
+                bugId: req.params.id
             })
+            return res.send(notes)
         } catch (error) {
-            next(error);
+            next(error)
         }
     }
     async create(req, res, next) {
         try {
             // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
             req.body.creator = req.user.email;
-            res.send(req.body);
+            let note = notesService.create(req.body)
+            return res.status(201).send(note)
         } catch (error) {
             next(error);
         }
