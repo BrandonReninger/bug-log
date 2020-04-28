@@ -3,7 +3,10 @@
     <tr scope="row">
       <td>{{bugData.title}}</td>
       <td>{{bugData.creatorEmail}}</td>
-      <td>{{bugData.closed}}</td>
+      <td>
+        <div class="text-primary" v-if="bugData.closed == false">Open</div>
+        <div class="text-warning" v-else>Closed</div>
+      </td>
       <td>{{bugData.updatedAt}}</td>
     </tr>
   </div>

@@ -9,7 +9,10 @@
       <div class="col-4">
         <h3>{{bug.creatorEmail}}</h3>
       </div>
-      <div class="col-3">Status: {{bug.closed}}</div>
+      <div class="col-3">
+        <div class="text-primary" v-if="bug.closed == false">Status: Open</div>
+        <div class="text-warning" v-else>Status: Closed</div>
+      </div>
     </div>
     <div class="row">
       <div class="col-12">
