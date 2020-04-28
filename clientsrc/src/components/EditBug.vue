@@ -5,7 +5,7 @@
         <h3>Edit Bug</h3>
         <div class="form-group">
           <label for="title"></label>
-          <input type="text" class="form-control" placeholder="Title here" v-model="bug.title" />
+          <input type="text" class="form-control" placeholder="Title here" v-model="newBug.title" />
         </div>
         <div class="form-group">
           <label for="description"></label>
@@ -13,7 +13,7 @@
             type="text"
             class="form-control"
             placeholder="description here"
-            v-model="bug.description"
+            v-model="newBug.description"
           />
         </div>
         <button class="btn btn-sm btn-primary" @click="editBug">Submit</button>
@@ -28,14 +28,20 @@ export default {
   name: "edit-bug",
   //props: ["bugData"],
   data() {
-    return {};
+    return {
+      newBug: {}
+    };
   },
   computed: {
     bug() {
       this.$store.state.activeBug;
     }
   },
-  methods: {},
+  methods: {
+    editBug() {
+      this.$store.dispatch("editBug", this.newBug);
+    }
+  },
   components: {}
 };
 </script>
