@@ -3,12 +3,12 @@
     <h1 class="text-center">Welcome to Bug Tracker</h1>
     <create-bug></create-bug>
     <div class="row d-flex">
-      <table class="col-12">
+      <table class="table col-12">
         <thead class="bg-info mt-2">Current Bugs</thead>
-        <th class="col-3">Title</th>
-        <th class="col-3">Reported By</th>
-        <th class="col-2">Status</th>
-        <th class="col-3">Last Modified</th>
+        <th scope="col">Title</th>
+        <th scope="col">Reported By</th>
+        <th scope="col">Status</th>
+        <th scope="col">Last Modified</th>
         <tbody>
           <bug v-for="bug in bugs" :key="bug._id" :bugData="bug"></bug>
         </tbody>

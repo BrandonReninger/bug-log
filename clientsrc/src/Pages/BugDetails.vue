@@ -18,11 +18,13 @@
       <button class="btn btn-sm btn-primary" @click="$router.push({name: 'Home'})">BACK</button>
     </div>
     <!--notes here-->
+    <create-note :bugData="bug"></create-note>
   </div>
 </template>
 
 
 <script>
+import CreateNote from "../components/CreateNote";
 export default {
   name: "bugDetails",
 
@@ -32,13 +34,16 @@ export default {
   created() {
     this.$store.dispatch("bugDeetz", this.$route.params.bugId);
   },
+  mounted() {
+    //this.$store.dispatch("getNotes", this.$route.params.bugId);
+  },
   computed: {
     bug() {
       return this.$store.state.activeBug;
     }
   },
   methods: {},
-  components: {}
+  components: { CreateNote }
 };
 </script>
 

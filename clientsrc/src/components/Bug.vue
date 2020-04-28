@@ -1,10 +1,10 @@
 <template>
   <div class="bug">
-    <tr>
-      <td class="col-3">{{bugData.title}}</td>
-      <td class="col-3">{{bugData.creatorEmail}}</td>
-      <td class="col-1">{{bugData.closed}}</td>
-      <td class="col-2">{{bugData.updatedAt}}</td>
+    <tr scope="row">
+      <td>{{bugData.title}}</td>
+      <td>{{bugData.creatorEmail}}</td>
+      <td>{{bugData.closed}}</td>
+      <td>{{bugData.updatedAt}}</td>
     </tr>
   </div>
 </template>
