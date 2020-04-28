@@ -25,9 +25,11 @@ export default {
   },
   methods: {
     deleteNote() {
-      debugger;
-      this.$store.dispatch("deleteNote", this.noteData);
-      this.$store.dispatch("getNotes", this.noteData.bugId);
+      if (confirm("You sure bud?")) {
+        this.$store.dispatch("deleteNote", this.noteData);
+      } else {
+        this.$store.dispatch("getNotes", this.noteData.bugId);
+      }
     }
   },
   components: {}

@@ -5,15 +5,15 @@
         <h1>{{bug.title}}</h1>
       </div>
     </div>
-    <div class="row">
+    <div class="row d-flex justify-content-between">
       <div class="col-4">
         <h3>{{bug.creatorEmail}}</h3>
       </div>
-      <div class="col-3">{{bug.closed}}</div>
+      <div class="col-3">Status: {{bug.closed}}</div>
     </div>
     <div class="row">
       <div class="col-12">
-        <p>{{bug.description}}</p>
+        <p class="border border-dark">{{bug.description}}</p>
       </div>
       <button class="btn btn-sm btn-primary" @click="$router.push({name: 'Home'})">BACK</button>
     </div>
