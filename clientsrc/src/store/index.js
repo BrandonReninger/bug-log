@@ -101,12 +101,11 @@ export default new Vuex.Store({
     async addNote({
       commit,
       dispatch
-    }, note) {
+    }, noteData) {
       try {
-        debugger
-        let res = await api.post('notes/', note)
-        console.log(res.data)
-        dispatch('getNotes', note)
+        console.log(noteData)
+        let res = await api.post('bugs/' + noteData.bugId + '/notes', noteData)
+        dispatch('getNotes', noteData.bugId)
       } catch (error) {
         console.error(error)
       }
@@ -118,6 +117,7 @@ export default new Vuex.Store({
     }, bugId) {
       try {
         let res = await api.get('bugs/' + bugId + '/notes')
+        console.log(res.data)
         commit('setNotes', res.data)
       } catch (error) {
         console.error(error)

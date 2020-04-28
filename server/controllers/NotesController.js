@@ -14,7 +14,7 @@ export class NotesController extends BaseController {
         this.router
             .use(auth0Provider.getAuthorizedUserInfo)
             //.get("", this.getAll)
-            .get("/:id", this.findAll)
+            //.get("/:id", this.findAll)
             // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
             //.post("", this.create)
             .delete("/:id", this.delete)
