@@ -9,20 +9,25 @@
       </td>
       <td>{{bugData.updatedAt}}</td>
     </tr>
+    <button class="btn btn-sm btn-primary" @click="openEdit =!openEdit">Edit</button>
+    <edit-bug v-if="openEdit"></edit-bug>
   </div>
 </template>
 
 
 <script>
+import EditBug from "../components/EditBug";
 export default {
   name: "bug",
   props: ["bugData"],
   data() {
-    return {};
+    return {
+      openEdit: false
+    };
   },
   computed: {},
   methods: {},
-  components: {}
+  components: { EditBug }
 };
 </script>
 
