@@ -98,6 +98,18 @@ export default new Vuex.Store({
       }
     },
 
+    async closeBug({
+      commit,
+      dispatch
+    }, bug) {
+      try {
+        console.log(bug)
+        let res = await api.put('bugs/' + bug.id, bug)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
     async addNote({
       commit,
       dispatch
@@ -141,11 +153,10 @@ export default new Vuex.Store({
     }, bug) {
       console.log(bug)
       try {
-        debugger
         let res = await api.put('bugs/' + bug.id, bug)
         //dispatch('getBugs')
       } catch (error) {
-
+        console.error(error)
       }
     }
 

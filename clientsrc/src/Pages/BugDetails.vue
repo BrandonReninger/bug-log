@@ -10,8 +10,9 @@
         <h3>{{bug.creatorEmail}}</h3>
       </div>
       <div class="col-3">
-        <div class="text-primary" v-if="bug.closed == false">Status: Open</div>
-        <div class="text-warning" v-else>Status: Closed</div>
+        <!--<div class="text-primary" v-if="bug.closed == false">Status: Open</div>
+        <div class="text-warning" v-else>Status: Closed</div>-->
+        <button class="btn btn-sm btn-danger" @click="closeBug">Close Bug?</button>
       </div>
     </div>
     <div class="row">
@@ -55,7 +56,16 @@ export default {
       return this.$store.state.notes;
     }
   },
-  methods: {},
+  methods: {
+    closeBug() {
+      if (confirm("Is this bug fixed")) {
+        this.bug.closed = true;
+        this.$store.dispatch("closeBug", this.bug);
+      } else {
+        console.log("change your mind?");
+      }
+    }
+  },
   components: { CreateNote, Note, EditBug }
 };
 </script>
