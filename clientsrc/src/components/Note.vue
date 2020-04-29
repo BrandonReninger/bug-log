@@ -3,7 +3,11 @@
     <!--<h3>{{noteData.creatorEmail}}</h3>-->
     <p>{{noteData.content}}</p>
 
-    <button class="btn btn-sm btn-danger" @click="deleteNote(noteData.id)">DELETE</button>
+    <button
+      v-show="noteData.creatorEmail == $auth.userInfo.email"
+      class="btn btn-sm btn-danger"
+      @click="deleteNote(noteData.id)"
+    >DELETE</button>
   </div>
 </template>
 

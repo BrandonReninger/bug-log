@@ -22,8 +22,12 @@
       <button class="btn btn-sm btn-primary" @click="$router.push({name: 'Home'})">BACK</button>
     </div>
     <!--edit-bug-->
-    <button class="btn btn-sm btn-primary" @click="openEdit =!openEdit">Edit</button>
-    <edit-bug v-if="openEdit"></edit-bug>
+    <button
+      v-show="bug.closed !==true"
+      class="btn btn-sm btn-primary"
+      @click="openEdit =!openEdit"
+    >Edit</button>
+    <edit-bug v-if="openEdit && bug.creatorEmail == $auth.userInfo.email"></edit-bug>
     <!--notes here-->
     <create-note :bugData="bug"></create-note>
     <note v-for="note in notes" :noteData="note" :key="note._id"></note>
