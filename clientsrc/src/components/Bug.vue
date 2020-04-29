@@ -1,6 +1,7 @@
 <template>
   <div class="bug">
     <tr scope="row">
+      <button class="btn btn-sm btn-success" @click="bugDeetz">Details</button>
       <td>{{bugData.title}}</td>
       <td>{{bugData.creatorEmail}}</td>
       <td>
@@ -8,14 +9,12 @@
         <div class="text-warning" v-else>Closed</div>
       </td>
       <td>{{bugData.updatedAt}}</td>
-      <button class="btn btn-sm btn-sucess"></button>
     </tr>
   </div>
 </template>
 
 
 <script>
-import EditBug from "../components/EditBug";
 export default {
   name: "bug",
   props: ["bugData"],
@@ -25,7 +24,17 @@ export default {
     };
   },
   computed: {},
-  methods: {},
+  methods: {
+    bugDeetz() {
+      this.$store.commit("setActiveBug");
+      this.$store.dispatch("bugDeetz", this.bugData.id);
+      this.$store.commit("setNotes");
+      this.$router.push({
+        name: "BugDetails",
+        params: { bugId: this.bugData.id }
+      });
+    }
+  },
   components: {}
 };
 </script>

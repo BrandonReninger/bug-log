@@ -16,7 +16,7 @@
             v-model="bug.description"
           />
         </div>
-        <div class="dropdown mb-3">
+        <!--<div class="dropdown mb-3">
           <button
             class="btn btn-sm btn-warning dropdown-toggle"
             type="button"
@@ -29,7 +29,7 @@
             <a class="dropdown-item" href="#" v-on:click.prevent="bug.closed === false">Open</a>
             <a class="dropdown-item" href="#" v-on:click.prevent="bug.closed === true">Closed</a>
           </div>
-        </div>
+        </div>-->
         <button class="btn btn-sm btn-primary" @click="editBug">Submit</button>
       </div>
     </div>
