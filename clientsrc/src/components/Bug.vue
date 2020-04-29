@@ -8,9 +8,8 @@
         <div class="text-warning" v-else>Closed</div>
       </td>
       <td>{{bugData.updatedAt}}</td>
+      <button class="btn btn-sm btn-sucess"></button>
     </tr>
-    <button class="btn btn-sm btn-primary" @click="openEdit =!openEdit">Edit</button>
-    <edit-bug v-if="openEdit"></edit-bug>
   </div>
 </template>
 
@@ -22,12 +21,12 @@ export default {
   props: ["bugData"],
   data() {
     return {
-      openEdit: false
+      //openEdit: false
     };
   },
   computed: {},
   methods: {},
-  components: { EditBug }
+  components: {}
 };
 </script>
 

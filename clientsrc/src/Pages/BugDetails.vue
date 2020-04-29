@@ -20,6 +20,9 @@
       </div>
       <button class="btn btn-sm btn-primary" @click="$router.push({name: 'Home'})">BACK</button>
     </div>
+    <!--edit-bug-->
+    <button class="btn btn-sm btn-primary" @click="openEdit =!openEdit">Edit</button>
+    <edit-bug v-if="openEdit"></edit-bug>
     <!--notes here-->
     <create-note :bugData="bug"></create-note>
     <note v-for="note in notes" :noteData="note" :key="note._id"></note>
@@ -28,13 +31,16 @@
 
 
 <script>
+import EditBug from "../components/EditBug";
 import CreateNote from "../components/CreateNote";
 import Note from "../components/Note";
 export default {
   name: "bugDetails",
 
   data() {
-    return {};
+    return {
+      openEdit: false
+    };
   },
   //created() {},
   mounted() {
@@ -50,7 +56,7 @@ export default {
     }
   },
   methods: {},
-  components: { CreateNote, Note }
+  components: { CreateNote, Note, EditBug }
 };
 </script>
 
