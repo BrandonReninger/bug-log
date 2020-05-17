@@ -8,7 +8,8 @@
         <div class="text-primary" v-if="bugData.closed == false">Open</div>
         <div class="text-danger" v-else>Closed</div>
       </td>
-      <td>{{bugData.updatedAt}}</td>
+      <td>{{bugData.updatedAt}}</td>//NOTE try to get this date formatting to work
+      <!-- <td>{{bugData.updatedAt | dateParse('YYYY-MM-DD') | dateFormat('MMMM D, YYYY')}}</td> -->
     </tr>
   </div>
 </template>
