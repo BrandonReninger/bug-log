@@ -1,6 +1,7 @@
 import Vue from "vue";
-import VueFilterDateFormat from 'vue-filter-date-format';
-Vue.use(VueFilterDateFormat);
+// import VueFilterDateFormat from 'vue-filter-date-format';
+// Vue.use(VueFilterDateFormat);
+Vue.use(require('vue-moment'));
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
