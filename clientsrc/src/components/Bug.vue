@@ -1,11 +1,11 @@
 <template>
   <div class="bug">
-    <tr scope="row">
-      <button class="btn btn-sm btn-success" @click="bugDeetz">Details</button>
+    <tr scope="row align-items-center">
+      <button class="btn btn-sm btn-light" @click="bugDeetz">Details</button>
       <td>{{bugData.title}}</td>
       <td>{{bugData.creatorEmail}}</td>
       <td>
-        <div class="text-primary" v-if="bugData.closed == false">Open</div>
+        <div class="text-success" v-if="bugData.closed == false">Open</div>
         <div class="text-danger" v-else>Closed</div>
       </td>
       <td>{{bugData.updatedAt | moment("dddd, MMMM Do YYYY")}}</td>
